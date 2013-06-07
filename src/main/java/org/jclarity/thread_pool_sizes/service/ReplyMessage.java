@@ -7,16 +7,18 @@ import javax.annotation.concurrent.Immutable;
 import org.codehaus.jackson.map.ObjectMapper;
 
 @Immutable
-public final class Timepoint {
+public final class ReplyMessage {
 
     private static final ObjectMapper mapper = new ObjectMapper();
 
     private final long epochMillis;
+    private final long fibonacci;
     private final String zoneId;
     private final String formattedString;
 
-    Timepoint(long epochMillis, String zoneId, String formattedString) {
+    ReplyMessage(long epochMillis, long fibonacci, String zoneId, String formattedString) {
         this.epochMillis = epochMillis;
+        this.fibonacci = fibonacci;
         this.zoneId = zoneId;
         this.formattedString = formattedString;
     }
@@ -40,6 +42,10 @@ public final class Timepoint {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public long getFibonacci() {
+        return fibonacci;
     }
 
 }

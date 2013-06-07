@@ -26,14 +26,14 @@ public class TimepointHandler extends AbstractHandler {
             response.setStatus(HttpServletResponse.SC_OK);
             baseRequest.setHandled(true);
             String zoneId = request.getParameter("zoneId");
-            Timepoint message = zoneId == null ? TimepointFactory.now() : TimepointFactory.now(zoneId);
+            ReplyMessage message = zoneId == null ? TimepointFactory.now() : TimepointFactory.now(zoneId);
             write(response, message);
         } finally {
             timer.stop();
         }
     }
 
-    private void write(HttpServletResponse response, Timepoint timepoint) throws IOException {
+    private void write(HttpServletResponse response, ReplyMessage timepoint) throws IOException {
         response.getWriter().println(timepoint.toString());
     }
 
