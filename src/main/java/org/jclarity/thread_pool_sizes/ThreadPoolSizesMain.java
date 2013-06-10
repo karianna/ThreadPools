@@ -1,5 +1,7 @@
 package org.jclarity.thread_pool_sizes;
 
+import static java.lang.Integer.parseInt;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.jclarity.thread_pool_sizes.service.TimepointHandler;
@@ -13,7 +15,7 @@ public class ThreadPoolSizesMain {
         server.setHandler(new TimepointHandler());
 
         QueuedThreadPool threadPool = (QueuedThreadPool) server.getThreadPool();
-        threadPool.setMaxThreads(args[0]);
+        threadPool.setMaxThreads(parseInt(args[0]));
 
         server.start();
         while(true) {
